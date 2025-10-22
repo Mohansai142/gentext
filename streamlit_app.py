@@ -6,7 +6,7 @@ import pdfplumber
 
 # ---------------- Page Setup ----------------
 st.set_page_config(page_title="📊 Automated Report Summarizer", page_icon="🧠")
-st.title("📊 Automated Multi-Input Report Summarizer (Gemini)")
+st.title("📊 Automated Multi-Input Report Summarizer ")
 st.write("Upload TXT, PDF, DOCX, CSV, Audio, or Chart Image to generate a detailed summary.")
 
 # ---------------- Gemini API Key ----------------
@@ -58,7 +58,7 @@ def summarize_with_gemini(text):
         ])
         return response.text
     except Exception as e:
-        return f"⚠️ Gemini summarization failed: {e}"
+        return f"⚠️ summarization failed: {e}"
 
 # ---------------- Gemini Image Analysis ----------------
 def analyze_chart_with_gemini(image_path):
@@ -77,7 +77,7 @@ def analyze_chart_with_gemini(image_path):
         ])
         return response.text
     except Exception as e:
-        return f"⚠️ Gemini analysis failed: {e}"
+        return f"⚠️ analysis failed: {e}"
 
 # ---------------- File Uploader ----------------
 uploaded_file = st.file_uploader(
@@ -98,12 +98,12 @@ if uploaded_file:
             except TypeError:
                 st.image(uploaded_file, caption="Uploaded Chart/Image", use_column_width=True)
 
-            st.info("🧠 Analyzing image with Gemini...")
+            st.info("🧠 Analyzing image ...")
             temp_path = "temp_chart.png"
             image.save(temp_path)
             chart_summary = analyze_chart_with_gemini(temp_path)
 
-            st.subheader("🖼️ Gemini Image Summary")
+            st.subheader("🖼️  Image Summary")
             st.success(chart_summary)
 
             text = f"AI Summary of chart:\n{chart_summary}"
@@ -135,7 +135,7 @@ if uploaded_file:
         st.subheader("📄 Extracted Text / Insights")
         st.write(text[:1000] + "..." if len(text) > 1000 else text)
 
-        with st.spinner("🧩 Generating detailed summary with Gemini..."):
+        with st.spinner("🧩 Generating detailed summary ..."):
             chunks = list(chunk_text(text, max_words=500))
             detailed_summary = ""
             for chunk in chunks:
