@@ -1,0 +1,10 @@
+streamlit
+transformers
+torch
+pdfplumber
+python-docx
+pandas
+SpeechRecognition
+Pillow
+google-generativeai
+matplotlib
