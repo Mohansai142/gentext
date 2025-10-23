@@ -1,0 +1,13 @@
+# Ignore model folder
+business_classifier/
+*.bin
+*.pt
+*.pth
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+venv/
+.env/
